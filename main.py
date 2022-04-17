@@ -166,15 +166,6 @@ def wxqd():
 		else:
 			return "微信积分商城：签到失败，{}".format(zz["msg"])
 
-# -------  检查更新模块  --------#
-#检查更新函数
-def up():
-	zz = requests.get(url=up_url).json()
-	if This_procedure_version >= zz['app_version']:
-		return "更新：最新"
-	else:
-		return "更新：有新版:{}\n更新内容：\n{}".format(zz['app_version'],zz['text'])
-
 # -------  运行模块  --------#
 #程序主运行函数
 def run():

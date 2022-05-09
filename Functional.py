@@ -18,7 +18,8 @@ class Encryption():
 
     #老ds算法函数 
     def getlDS(self):
-        n = 'cx2y9z9a29tfqvr1qsq6c7yz99b5jsqt'
+        n = "h8w582wxwgqvahcdkpvdhbh2w9casgfl"  #2.3.0
+        #n = 'cx2y9z9a29tfqvr1qsq6c7yz99b5jsqt'  2.2.1
         i = str(int(time.time()))
         r = ''.join(random.sample(string.ascii_lowercase + string.digits, 6))
         c = self.md5("salt=" + n + "&t=" + i + "&r=" + r)
@@ -27,6 +28,8 @@ class Encryption():
 
     #ds算法函数 
     def getDS(self):
+        #n = "h8w582wxwgqvahcdkpvdhbh2w9casgfl"
+        #n = "14bmu1mz0yuljprsfgpvjh3ju2ni468r"
         n = "fd3ykrh7o1j54g581upo1tvpam0dsgtf"
         i = str(int(time.time()))
         r = self.randomStr(6)
@@ -117,7 +120,7 @@ class YsReward():
             'User-Agent':'Mozilla/5.0 (Linux; Android 7.0; Meizu S6 Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/65.0.3325.110 Mobile Safari/537.36 miHoYoBBS/2.2.0',
             'x-rpc-device_id':'2eee2fdb-0cc1-3f25-8e5c-0e2b06439cbd',
             'referer':'https://webstatic.mihoyo.com/bbs/event/signin-ys/index.html?bbs_auth_required=true&act_id=e202009291139501&utm_source=bbs&utm_medium=mys&utm_campaign=icon',
-            'x-rpc-app_version':'2.2.1',
+            'x-rpc-app_version':'2.3.0',
             'Host':'api-takumi.mihoyo.com',
             'x-rpc-client_type':'5',
             'Content-Type':'application/json;charset=UTF-8',

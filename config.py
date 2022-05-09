@@ -1,15 +1,9 @@
 # -*- coding: utf-8 -*-
-#本程序版本
-This_procedure_version = '1.0'
-#米游社app版本号
-app_version = "2.7.0"
 #米游社论坛cookie
 mihoyo_bbs = ""
 #原神签到奖励cookie，此字段不能为空
 YsRewardCookie = ""
-#微信签到cookie加token
-wxqd_cookie = ""
-wxqd_token = ""
+
 #-------- 推送key配置 ---------#
 #qmsg推送key
 qmsg_key = ""
@@ -52,5 +46,10 @@ gameList = [
         "forumId":"52",
         "name":"崩坏：星穹铁道",
         "url":"https://bbs.mihoyo.com/sr/"
+    },{
+        "id":"8",
+        "forumId":"57",
+        "name":"绝区零",
+        "url":"https://bbs.mihoyo.com/zzz/"
     }
 ]

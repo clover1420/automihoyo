@@ -16,8 +16,8 @@ class Encryption():
     def randomStr(self,n):
         return (''.join(random.sample(string.ascii_lowercase, n))).upper()
 
-    #老ds算法函数 
-    def getlDS(self):
+    #ys-web-ds算法函数 
+    def get_web_DS(self):
         n = "h8w582wxwgqvahcdkpvdhbh2w9casgfl"  #2.3.0
         #n = 'cx2y9z9a29tfqvr1qsq6c7yz99b5jsqt'  2.2.1
         i = str(int(time.time()))
@@ -26,8 +26,8 @@ class Encryption():
         return "{},{},{}".format(i, r, c)
 
 
-    #ds算法函数 
-    def getDS(self):
+    #bbs-ds算法函数 
+    def get_bbs_DS(self):
         #n = "h8w582wxwgqvahcdkpvdhbh2w9casgfl"
         #n = "14bmu1mz0yuljprsfgpvjh3ju2ni468r"
         n = "fd3ykrh7o1j54g581upo1tvpam0dsgtf"
@@ -46,7 +46,7 @@ class Mys_bbs():
     def __init__(self,bbs_cookie) -> None:
         ds = Encryption()
         self.headers = {
-			'DS':ds.getDS(),
+			'DS':ds.get_bbs_DS(),
 			'cookie':bbs_cookie,
 			'x-rpc-client_type':'2',
 			'x-rpc-app_version':'2.7.0',
@@ -127,7 +127,7 @@ class YsReward():
             'Accept':'application/json, text/plain, */*',
             'cookie':YsCookie,
             'X-Requested-With':'com.mihoyo.hyperion',
-            'ds':ds.getlDS()
+            'ds':ds.get_web_DS()
         }
     
     #获取游戏uid函数

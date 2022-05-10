@@ -29,9 +29,8 @@ class Encryption():
 
     #bbs-ds算法函数 
     def get_bbs_DS(self):
-        #n = "h8w582wxwgqvahcdkpvdhbh2w9casgfl"
-        #n = "14bmu1mz0yuljprsfgpvjh3ju2ni468r"
-        n = "fd3ykrh7o1j54g581upo1tvpam0dsgtf" #2.7.0
+        n = "dmq2p7ka6nsu0d3ev6nex4k1ndzrnfiy" #2.8.0
+        #n = "fd3ykrh7o1j54g581upo1tvpam0dsgtf" #2.7.0
         i = str(int(time.time()))
         r = self.randomStr(6)
         c = self.md5("salt=" + n + "&t=" + i + "&r=" + r)
@@ -50,7 +49,7 @@ class Mys_bbs():
 			'DS':ds.get_bbs_DS(),
 			'cookie':bbs_cookie,
 			'x-rpc-client_type':'2',
-			'x-rpc-app_version':'2.7.0',
+			'x-rpc-app_version':'2.8.0',
 			'x-rpc-sys_version':'12',
 			'x-rpc-device_id':'818b3153-e80a-3697-81db-f96cc9c693de',
 			'x-rpc-channel':'xiaomi',

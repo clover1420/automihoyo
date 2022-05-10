@@ -5,8 +5,14 @@ mihoyo_bbs = ""
 YsRewardCookie = ""
 
 #-------- 推送key配置 ---------#
-#qmsg推送key
-qmsg_key = ""
+push = {
+    # 推送方式
+    "PushMode":"qmsg",
+    "PushKey":{
+        "Qmsg":"",
+        "Server":""
+    }
+}
 
 #-------- 米游设板块 ---------#
 # 米游设板块编号id

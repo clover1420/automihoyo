@@ -3,6 +3,8 @@ import hashlib
 import time
 import random
 import string
+from src.logger import Log
+logger = Log()
 
 # -------  加密算法类 --------#
 class Encryption():
@@ -25,12 +27,11 @@ class Encryption():
         c = self.md5("salt=" + n + "&t=" + i + "&r=" + r)
         return "{},{},{}".format(i, r, c)
 
-
     #bbs-ds算法函数 
     def get_bbs_DS(self):
         #n = "h8w582wxwgqvahcdkpvdhbh2w9casgfl"
         #n = "14bmu1mz0yuljprsfgpvjh3ju2ni468r"
-        n = "fd3ykrh7o1j54g581upo1tvpam0dsgtf"
+        n = "fd3ykrh7o1j54g581upo1tvpam0dsgtf" #2.7.0
         i = str(int(time.time()))
         r = self.randomStr(6)
         c = self.md5("salt=" + n + "&t=" + i + "&r=" + r)
@@ -63,8 +64,10 @@ class Mys_bbs():
     def bbs_sign(self,bbsid):
         zz = requests.post(url=self.plate_signin_url.format(bbsid),headers=self.headers).json()
         if zz['message'] == 'OK':
+            logger.info("签到成功")
             return "签到成功"
         else:
+            logger.info(zz['message'])
             return zz['message']
 
 	#获取帖子id
@@ -79,19 +82,19 @@ class Mys_bbs():
     def Share(self,post_id):
         zz = requests.get(url=self.share_url.format(post_id),headers=self.headers).json()
         if zz['message'] == 'OK':
-            print('分享帖子：成功')
+            logger.info('分享帖子：成功')
             return "分享帖子：成功"
         else:
-            print('分享帖子：失败')
+            logger.info('分享帖子：失败')
             return "分享帖子：失败"
 
     #看贴
     def Latsk(self,post_id):
         zz = requests.get(self.see_post_url.format(post_id),headers=self.headers).json()
         if zz['message'] == 'OK':
-            print('看贴成功')
+            logger.info('看贴成功')
         else:
-            print('看贴失败')
+            logger.info('看贴失败'+zz['message'])
         return "看贴："+ zz['message']
 
     #米游社帖子点赞
@@ -99,11 +102,11 @@ class Mys_bbs():
         data = '{"is_cancel":false,"post_id":"'+ post_id +'"}'
         dafh = requests.post(url=self.Like_url,data=data,headers=self.headers).json()
         if dafh['message'] == 'OK':
-            print('点赞帖子：成功')
-            return "点赞帖子：成功"
+            logger.info('点赞帖子：成功')
+            return "成功"
         else:
-            print('点赞帖子：失败')
-            return "点赞帖子：失败"
+            logger.info('点赞帖子：失败')
+            return "失败"
 
 # -------  原神游戏每日签到类  --------#
 class YsReward():
@@ -148,6 +151,7 @@ class YsReward():
     def Getjlxx(self,day):
         zz = requests.get(url=self.Todays_reward_url,headers=self.heades).json()
         sy = int(day)
+        logger.info('今日奖励: ' + zz["data"]['awards'][sy]['name'] + ' x ' + str(zz["data"]['awards'][sy]['cnt']))
         return '今日奖励: ' + zz["data"]['awards'][sy]['name'] + ' x ' + str(zz["data"]['awards'][sy]['cnt'])
     
     #游戏每日签到函数
@@ -158,6 +162,8 @@ class YsReward():
         data = '{"act_id":"e202009291139501","region":"'+ uid['region'] +'","uid":"'+ uid['game_uid'] +'"}'
         zz = requests.post(url=self.Check_in_daily_url,data=data,headers=self.heades).json()
         if zz['message'] == 'OK':
-            return '签到结果: 签到完成'
-        else:		
-            return '签到结果: ' + zz['message']
+            fh = '签到结果: 签到完成'
+        else:	
+            fh = '签到结果: ' + zz['message']
+        logger.info(fh)
+        return fh

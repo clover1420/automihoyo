@@ -60,13 +60,13 @@ class Mys_bbs():
 		}
 
     #论坛签到函数
-    def bbs_sign(self,bbsid):
+    def bbs_sign(self,bbsid,name):
         zz = requests.post(url=self.plate_signin_url.format(bbsid),headers=self.headers).json()
         if zz['message'] == 'OK':
-            logger.info("签到成功")
+            logger.info(f"{name} 签到成功")
             return "签到成功"
         else:
-            logger.info(zz['message'])
+            logger.info(f"{name} {zz['message']}")
             return zz['message']
 
 	#获取帖子id
@@ -81,19 +81,19 @@ class Mys_bbs():
     def Share(self,post_id):
         zz = requests.get(url=self.share_url.format(post_id),headers=self.headers).json()
         if zz['message'] == 'OK':
-            logger.info('分享帖子：成功')
+            logger.info(f'分享 {post_id} 帖子：成功')
             return "分享帖子：成功"
         else:
-            logger.info('分享帖子：失败')
+            logger.info(f'分享 {post_id} 帖子：失败')
             return "分享帖子：失败"
 
     #看贴
     def Latsk(self,post_id):
         zz = requests.get(self.see_post_url.format(post_id),headers=self.headers).json()
         if zz['message'] == 'OK':
-            logger.info('看贴成功')
+            logger.info(f'{post_id} 看贴成功')
         else:
-            logger.info('看贴失败'+zz['message'])
+            logger.info('看贴失败'+ zz['message'])
         return "看贴："+ zz['message']
 
     #米游社帖子点赞
@@ -101,10 +101,10 @@ class Mys_bbs():
         data = '{"is_cancel":false,"post_id":"'+ post_id +'"}'
         dafh = requests.post(url=self.Like_url,data=data,headers=self.headers).json()
         if dafh['message'] == 'OK':
-            logger.info('点赞帖子：成功')
+            logger.info(f'点赞 {post_id} 帖子：成功')
             return "成功"
         else:
-            logger.info('点赞帖子：失败')
+            logger.info(f'点赞 {post_id} 帖子：失败')
             return "失败"
 
 # -------  原神游戏每日签到类  --------#

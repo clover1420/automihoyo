@@ -13,6 +13,7 @@ class Push():
         self.msg = msg
         pass
 
+    #qmsg酱推送
     def Qmsg(self) -> None:
         if self.qmsg_key == "":
             logger.info("没有配置qmsg酱key")
@@ -28,6 +29,7 @@ class Push():
             except Exception as e:
                 logger.error("qmsg酱可能挂了:"+e)
 
+    #Sever酱推送
     def Server(self,title="米游社签到") -> None:
         if self.Server_key == "":
             logger.info("没有Server酱cookie")

@@ -38,7 +38,7 @@ def run():
 	return data
 
 # -------  推送模块  --------#
-#qmsg推送
+#消息推送
 def PuSh():
 	msg = run()
 	pushs = Push(msg,push)

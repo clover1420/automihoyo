@@ -1,6 +1,7 @@
 # 米游社,原神自动签到。
 基于Python3的米游社自动签到项目
 
+[gitee仓库](https://gitee.com/clover1314/auto-mihoyo?_from=gitee_search)
 # 获取米游社Cookie
 
 1. 打开你的浏览器,进入**无痕/隐身模式**
